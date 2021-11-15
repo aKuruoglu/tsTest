@@ -14,7 +14,6 @@ class CategoryModel extends ModelQuery<Category> {
     return super.delete( _id );
   }
 
-
 }
 
 export default new CategoryModel(db.collections.category);

@@ -17,7 +17,6 @@ class MiddlewareQuery<T> extends ModelQuery<T> {
     return this.model.updateMany( { categoryId: _id }, { isDeleted: true } );
   }
 
-
   public getByCategory( categoryId: Mid, page: number = 0, limit: number ): Query<any, Document[]> {
     const skip = page * limit;
     return this.model.find( {

@@ -1,8 +1,8 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import {Category} from "../../src/entities/category/interface";
-import {Article} from "../../src/entities/article/interface";
-import {Recipe} from "../../src/entities/recipe/interface";
+import { Article } from '../../src/entities/article/interface';
+import { Category } from '../../src/entities/category/interface';
+import { Recipe } from '../../src/entities/recipe/interface';
 
 chai.use(chaiHttp);
 const expect = chai.expect;
