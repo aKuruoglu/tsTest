@@ -4,7 +4,7 @@ import db from '../../component/mongodb';
 import { Mid } from '../../utils/commonIterface';
 import { Recipe } from './interface';
 
-class RecipeModel extends MiddlewareQuery {
+class RecipeModel extends MiddlewareQuery<Recipe> {
     public create( { title, description, categoryId }: Recipe ): Promise<Recipe> {
         return super.create( { title, description, categoryId } );
     }

@@ -1,0 +1,1 @@
+{"parent":null,"pid":53,"argv":["/usr/bin/node","/usr/share/yarn/bin/yarn.js","test"],"execArgv":[],"cwd":"/app","time":1636981052513,"ppid":42,"coverageFilename":"/app/.nyc_output/e0ba0a94-2804-4152-bb88-52b4d7dbaa3f.json","externalId":"","uuid":"e0ba0a94-2804-4152-bb88-52b4d7dbaa3f","files":[]}

@@ -4,3 +4,6 @@ services:
   api:
     env_file:
       - ./env/.env.test
+  mongo:
+    ports:
+      - '27018:27017'

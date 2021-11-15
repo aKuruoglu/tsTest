@@ -4,7 +4,7 @@ import db from '../../component/mongodb';
 import { Mid } from '../../utils/commonIterface';
 import { Article } from './interface';
 
-class ArticleModel extends MiddlewareQuery {
+class ArticleModel extends MiddlewareQuery<Article> {
   public create( { title, description, categoryId, mainText }: Article ): Promise<Article> {
     return super.create( { title, description, categoryId, mainText } );
   }

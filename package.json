@@ -6,16 +6,23 @@
   "scripts": {
     "docker": "NODE_ENV=development docker-compose -f docker-compose.yml -f docker-compose/docker-compose.dev.yml --env-file env/.env.dev run -p 4000:4000 --rm -v $(pwd):/app api $npm_config_name",
     "test_env": "NODE_ENV=test docker-compose -f docker-compose.yml -f docker-compose/docker-compose.test.yml --env-file env/.env.test run --rm -v $(pwd):/app api $npm_config_name",
-    "start": "nodemon --watch 'src/**' --exec 'ts-node' src/app.ts",
+    "start": "nodemon --watch 'src/**' --exec 'ts-node' src/index.ts",
     "build": "tsc",
-    "prod": "node dist/app.js"
+    "prod": "node dist/index.js",
+    "test": "mocha  --require ts-node/register --timeout 500000 'test/**' --exit",
+    "coverage": "nyc yarn test"
   },
   "devDependencies": {
     "@types/express": "^4.16.1",
+    "@types/mocha": "^9.0.0",
     "@types/node": "14.6.2",
     "@types/whatwg-url": "^8.2.1",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "dotenv": "^10.0.0",
+    "mocha": "^9.1.3",
     "nodemon": "^2.0.14",
+    "nyc": "^15.1.0",
     "ts-node": "^10.4.0",
     "tslint": "^5.12.1",
     "tslint-eslint-rules": "^5.4.0",

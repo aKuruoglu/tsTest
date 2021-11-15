@@ -1,6 +1,8 @@
 import { Mid } from '../../utils/commonIterface';
+import ArticleModel from '../article/model';
 import { CategorySegregation } from '../categorySegregation/interface';
 import CategorySegregationModel from '../categorySegregation/model';
+import RecipeModel from '../recipe/model';
 import { Category } from './interface';
 import CategoryModel from './model';
 import CategoryValidate from './validate';
@@ -19,7 +21,9 @@ class CategoryControl {
     }
 
     public async delete(id: Mid): Promise<Category> {
-        await CategoryValidate.checkId({ id });
+        await CategoryValidate.checkId({ _id: id });
+        await RecipeModel.deleteAllByCategoryId(id);
+        await ArticleModel.deleteAllByCategoryId(id);
         const category: Category = await CategoryModel.delete(id);
         await CategorySegregationModel.delete(id);
         return category;
@@ -30,10 +34,14 @@ class CategoryControl {
     }
 
     public async update(_id: Mid, body: Category ): Promise<Category> {
-        await CategoryValidate.checkId(_id );
-        await CategoryValidate.update(body);
+        console.log('control')
+        const validId = await CategoryValidate.checkId({_id} );
+        console.log(validId)
+        const validBody = await CategoryValidate.update(body);
+        console.log(validBody)
         await CategoryValidate.possibleChangeParent(_id, body.parentCategoryId);
-        const category = CategoryModel.update(_id, body);
+        const category = await CategoryModel.update(_id, body);
+        console.log(category)
         await CategorySegregationModel.update(_id, body);
         return category;
     }
