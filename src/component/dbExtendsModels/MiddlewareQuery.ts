@@ -2,7 +2,7 @@ import { Query } from 'mongoose';
 import { Mid } from '../../utils/commonIterface';
 import ModelQuery from './ModelQuery';
 
-class MiddlewareQuery extends ModelQuery {
+class MiddlewareQuery<T> extends ModelQuery<T> {
   constructor(model) {
     super(model);
     this.model = model;
@@ -12,6 +12,9 @@ class MiddlewareQuery extends ModelQuery {
        categoryId: _id,
        isDeleted: false,
      });
+  }
+  public deleteAllByCategoryId( _id: Mid ) {
+    return this.model.updateMany( { categoryId: _id }, { isDeleted: true } );
   }
 
   public getByCategory( categoryId: Mid, page: number = 0, limit: number ): Query<any, Document[]> {

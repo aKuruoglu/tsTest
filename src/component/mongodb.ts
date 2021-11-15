@@ -13,7 +13,6 @@ class Mongo {
 
   public async init(): Promise<void> {
     await connect(`mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}`, config.get('mongo'));
-
     this.crawler();
     logger.info('Mongo connected');
   }

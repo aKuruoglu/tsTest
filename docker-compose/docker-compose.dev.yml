@@ -1,0 +1,12 @@
+version: '3.4'
+services:
+  mongo:
+    ports:
+      - '$MONGO_OUT_PORT:27017'
+  api:
+    ports:
+      - '$SERVER_OUT_PORT:4000'
+    volumes:
+      - .:/app
+    env_file:
+      - ./env/.env.dev

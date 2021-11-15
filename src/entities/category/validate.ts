@@ -1,7 +1,7 @@
 import ErrorsHandler from '../../component/ErrorsHandler';
 import validator from '../../component/Validator';
+import { Mid } from '../../utils/commonIterface';
 import CategoryModel from '../category/model';
-import {Mid} from "../../utils/commonIterface";
 
 class CategoryValidate {
   public category = {
